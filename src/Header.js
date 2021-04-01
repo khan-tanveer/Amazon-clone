@@ -38,6 +38,7 @@ const Header = () => {
 
         <div className="header__optionBasket">
           <ShoppingBasketIcon />
+          <h1>hello</h1>
           <span className="header__optionLineTwo header__basketCount">0</span>
         </div>
       </div>
