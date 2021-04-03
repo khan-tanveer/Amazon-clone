@@ -4,6 +4,7 @@ import "./Login.css";
 import { auth } from "./firebase";
 
 const Login = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,6 +12,12 @@ const Login = () => {
     e.preventDefault();
 
     // some fancy firebse login shitttttttttttttt
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        history.push("/");
+      })
+      .catch((error) => alert(error.message));
   };
 
   const register = (e) => {
@@ -22,6 +29,9 @@ const Login = () => {
       .then((auth) => {
         //it successfully create a new user with email and password
         console.log(auth);
+        if (auth) {
+          history.push("/");
+        }
       })
       .catch((error) => alert(error.message));
   };
