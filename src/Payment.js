@@ -40,7 +40,12 @@ const Payment = () => {
         </div>
 
         {/* payment section - payment methods */}
-        <div className="payment__section"></div>
+        <div className="payment__section">
+          <div className="payment__title">
+            <h3>Payment Method</h3>
+          </div>
+          <div className="payment__details">{/* stripe payment */}z</div>
+        </div>
       </div>
     </div>
   );
