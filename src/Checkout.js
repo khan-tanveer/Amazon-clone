@@ -30,11 +30,6 @@ const Checkout = () => {
               rating={item.rating}
             />
           ))}
-
-          {/* checkout product */}
-          {/* checkout product */}
-          {/* checkout product */}
-          {/* checkout product */}
         </div>
       </div>
 

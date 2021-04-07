@@ -37,8 +37,6 @@ const Payment = () => {
     getClientSecret();
   }, [basket]);
 
-  console.log("THE SECRET IS >>>>>", clientSecret);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // here do all fancy stripe stufff...........................
@@ -54,7 +52,7 @@ const Payment = () => {
         //paymentIntent = payment confirmation
 
         db.collection("users")
-          .doc(user?.id)
+          .doc(user?.uid)
           .collection("orders")
           .doc(paymentIntent.id)
           .set({
@@ -73,6 +71,7 @@ const Payment = () => {
 
         history.replace("/orders");
       });
+    payload();
   };
 
   const handleChange = (e) => {
@@ -81,6 +80,9 @@ const Payment = () => {
     setDisabled(e.empty);
     setError(e.error ? e.error.message : "");
   };
+
+  console.log("THE SECRET IS >>>>>", clientSecret);
+  console.log("perosn", user);
 
   return (
     <div className="payment">
@@ -124,8 +126,8 @@ const Payment = () => {
           </div>
           <div className="payment__details">
             {/* stripe payment */}
-            <form onSubmit={(e) => handleSubmit(e)}>
-              <CardElement onChange={() => handleChange} />
+            <form onSubmit={handleSubmit}>
+              <CardElement onChange={handleChange} />
               <div className="payment__priceContainer">
                 <CurrencyFormat
                   renderText={(value) => (
@@ -141,7 +143,10 @@ const Payment = () => {
                   thousandSeparator={true}
                   prefix={"$"}
                 />
-                <button disabled={processing || disabled || succeeded}>
+                <button
+                  // onClick={handleSubmit}
+                  disabled={processing || disabled || succeeded}
+                >
                   <span>{processing ? <p>Processing</p> : "Buy Now "}</span>
                 </button>
               </div>
