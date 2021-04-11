@@ -39,7 +39,7 @@ const Payment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // here do all fancy stripe stufff...........................
+    // here do all fancy stripe stufff..............................
     setProcessing(true);
 
     const payload = await stripe
