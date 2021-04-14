@@ -11,7 +11,7 @@ const Login = () => {
   const signIn = (e) => {
     e.preventDefault();
 
-    // some fancy firebse login shitttttttttttttt
+    // some fancy firebse login shitttttttttttttt.............
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
